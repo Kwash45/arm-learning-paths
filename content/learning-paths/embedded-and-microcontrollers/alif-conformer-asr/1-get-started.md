@@ -106,13 +106,6 @@ find resources_downloaded/asr -name '*.pte' -print
 ls -lh resources/asr/labels/librispeech_sp.pieces
 ```
 
-<!-- MLEK creates two alternative ExecuTorch programs from the same checkpoint. CMake selects one at build time:
-
-- `..._arm_TOSA-1.0+FP.pte`: non-delegated floating-point program used without an Ethos-U NPU.
-- `..._arm_delegate_ethos-u85-256_Dedicated_Sram.pte`: quantized program compiled for an Ethos-U85 with 256 MACs. The FVP uses this file.
-
-`fp32` identifies the source checkpoint; the delegated file is still quantized. `Dedicated_Sram` is the NPU compiler memory mode, not the E8 external-flash location. -->
-
 ## How are the ExecuTorch .pte files generated?
 
 The setup script is a wrapper around the MLEK resource pipeline. For the ASR use case, it does three jobs:
@@ -204,26 +197,6 @@ At runtime, the application converts audio into Mel spectrogram features, runs t
 The vocab file is a line-by-line token list. During postprocessing, the decoder uses the model output value as an index into this list.
 
 Each entry is a piece of text. Some pieces are single letters, some are word fragments, and some represent common words or word starts. SentencePiece uses the `▁` marker to represent a word boundary, so `▁the` means the token starts a new word.
-
-<!-- Move training-from-scratch into further_reading. It is far beyond the LP’s core task. If custom deployment remains, add a short explicit branch showing these CMake overrides:
-For the FVP build, they would need:
-    -Dasr_MODEL_PATH=/absolute/path/custom.pte \
-    -Dasr_LABELS_TXT_FILE=/absolute/path/custom.pieces
-
-For the Alif build:
-    -Dalif_asr_MODEL_PATH=/absolute/path/custom.pte \
-    -Dalif_asr_LABELS_TXT_FILE=/absolute/path/custom.pieces
-
-These options are supported by MLEK’s usecase.cmake. The custom model must also match the expected inputs, vocabulary, preprocessing, Ethos-U85 configuration, and memory requirements.
- -->
-
-<!-- ## (Optional) Run these steps manually
-
-If you want to run these steps manually, you can start from the original [FP32 implementation of the Conformer](https://github.com/sooftware/conformer/), train the model on a LibriSpeech dataset from torchaudio, and perform Post-Training Quantization (PTQ) to convert from FP32 to INT8, with instructions here: [PyTorch Conformer Train and Quantize](https://github.com/Arm-Examples/ML-examples/tree/main/pytorch-conformer-train-quantize). For more detail, check out the [End-to-end INT8 Conformer on Arm blog](https://developer.arm.com/community/arm-community-blogs/b/internet-of-things-blog/posts/end-to-end-int8-conformer-on-arm-training-quantization-and-deployment-on-ethos-u85).
-
-Alternatively, you can use the exported INT8 Quantized Conformer model, provided by Arm on Hugging Face: [INT8 Conformer](https://huggingface.co/Arm/stt_en_conformer_executorch_small).
-
-Once you have obtained an exported INT8 Conformer model, you will need to lower to ExecuTorch `.pte` format using the `to_edge_transform_and_lower` API. Instructions can be found at the Hugging Face link. -->
 
 ## What you have accomplished and what is next
 

@@ -37,14 +37,6 @@ To connect to the Alif Ensemble E8 DevKit:
 Keep a supported display connected throughout the board steps. The `alif_asr` application at the revision used here needs the display attached to run.
 {{% /notice %}}
 
-<!-- Use an E8 DevKit, its supported display and ribbon cable, and a USB-C data cable. With the board powered off, connect the display as shown in the [E8 DevKit User Guide](https://alifsemi.com/download/AUGD0023). Check the ribbon orientation and connector latch before applying power.
-
-Connect the USB-C data cable to the connector marked **PRG USB**. This connection provides access to the onboard SEGGER J-Link and the serial programming interface.
-
-Locate the **RESET** push-button, the joystick, and the **SW4** selector. You will use **SE** when programming MRAM. `BOARD_BUTTON2` in the application is the joystick's centre press.
-
-**Image placeholder:** E8 DevKit with the supported display connected. Mark the display ribbon connection, PRG USB connector, RESET button, SW4 selector, joystick centre, and onboard microphones. -->
-
 <!-- AUTHOR TODO: Confirm the exact display module used for the published test and add a close-up showing the ribbon orientation. Keep the hardware photo specific to the tested E8 DevKit revision. -->
 
 ## Install SETOOLS
@@ -197,8 +189,6 @@ The board configuration uses `TARGET_SUBSYSTEM=RTSS-HP`, `TARGET_BOARD=DevKit-e8
 - `ML_FWK_TMP_MEM_SIZE=0x002C0000` for temporary allocation.
 
 Keep these settings for the first run so that model selection, runtime memory, and the physical connections match the tested application.
-
-<!-- AUTHOR TODO: Retain a short Alif-reviewed explanation of how the memory pool sizes were selected if available. Any optional microphone paths or capture-length changes belong after the verified default run. -->
 
 ## What you have accomplished and what is next
 
