@@ -136,8 +136,6 @@ Keep the **PRG USB** cable connected after installing and resetting the CPU stub
 
 The steps follow the [Alif MLEK J-Flash guide](https://github.com/alifsemi/alif_ml-embedded-evaluation-kit/blob/0b6ce72c495265501f7a12eaed8e6ea71ef4bf15/docs/programming_flash_jlink.md#j-flash-project). The screenshots below show J-Flash V9.78 on macOS.
 
-<!-- If you run SETOOLS in WSL and J-Flash in Windows, detach the device from WSL before this step. Reattach it before the final MRAM write. See [Microsoft's WSL USB connection instructions](https://learn.microsoft.com/en-us/windows/wsl/connect-usb) for that host-specific setup. Native Linux and macOS do not use `usbipd`. -->
-
 1. Open **J-Flash**, select **Create new project**, then select **Start J-Flash**.
 
    ![J-Flash welcome dialog with Create new project selected. Select Start J-Flash to open the project wizard.#center](jflash-create-project.png "Create a new J-Flash project")
