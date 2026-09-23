@@ -45,7 +45,7 @@ tools_software_languages:
 operatingsystems:
     - Baremetal
     - Linux
-    - MacOS
+    - macOS
 
 further_reading:
     - resource:
