@@ -5,7 +5,7 @@ description: Run Arm AI Portal image upscaling models on the Alif Ensemble E8 us
 
 minutes_to_complete: 35
 
-who_is_this_for: Use this Learning Path if you develop Embedded or machine learning applications and want to run optimized image upscaling models locally on Arm Ethos-U85 NPU.
+who_is_this_for: Use this Learning Path if you want to run optimized image upscaling models locally on the Arm Ethos-U85 NPU.
 
 learning_objectives:
     - Download QuickSRNetSmall and SESR-M5 from the Arm AI Portal.
